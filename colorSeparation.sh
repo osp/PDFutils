@@ -46,4 +46,4 @@ do
     echo "</div>" >> 00-${bn}-plates.html
 done
 
-cat ../colorSeparation_footer.html  >> ${bn}-plates.html
+cat ../colorSeparation_footer.html  >> 00-${bn}-plates.html
