@@ -8,6 +8,7 @@
         });
         function showhide(color){
             $("#" + color).click(function(){
+                $(this).toggleClass("active");
                 $("img").hide();
                 $("." + color).show();
             });

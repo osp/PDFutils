@@ -20,6 +20,10 @@ cd ${bn}_plates
 
 echo "CONVERT TIF TO JPG"
 for TIF in *.tif; do convert $TIF $(basename $TIF .tif).jpg; done
+for Cyan in *Cyan*; do convert $Cyan -colorspace Gray +level-colors cyan, $Cyan; done
+for Magenta in *Magenta*; do convert $Magenta -colorspace Gray +level-colors magenta, $Magenta; done
+for Yellow in *Yellow*; do convert $Yellow -colorspace Gray +level-colors yellow, $Yellow; done
+
 
 echo "REMOVE TIF FILES"
 rm *tif
