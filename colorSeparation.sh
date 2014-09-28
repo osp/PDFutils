@@ -14,19 +14,22 @@ bn=$(basename ${1} .pdf)
 gs -sDEVICE=tiffsep -dNOPAUSE -dBATCH -r150x150 -sOutputFile=${bn}-page%03d.tif ${1}
 
 echo "MOVE TIF FILES INTO '${bn}-plates' FOLDER"
-mkdir ${bn}_plates
+mkdir -p ${bn}_plates
 mv ${bn}*.tif ${bn}_plates
 cd ${bn}_plates
 
 echo "CONVERT TIF TO JPG"
 for TIF in *.tif; do convert $TIF $(basename $TIF .tif).jpg; done
+
+echo "REMOVE TIF FILES"
+rm *tif
+
+echo "MAKE COLOURED PREVIEW"
 for Cyan in *Cyan*; do convert $Cyan -colorspace Gray +level-colors cyan, $Cyan; done
 for Magenta in *Magenta*; do convert $Magenta -colorspace Gray +level-colors magenta, $Magenta; done
 for Yellow in *Yellow*; do convert $Yellow -colorspace Gray +level-colors yellow, $Yellow; done
 
 
-echo "REMOVE TIF FILES"
-rm *tif
 
 echo "GENERATE HTML PREVIEW PAGE"
 cat ../colorSeparation_header.html > 00-${bn}-plates.html
@@ -42,11 +45,11 @@ for i in $(eval echo "{$start..$end}")
 do
     page=$(printf "%03u" ${i})
     echo "<div id='page${page}' class='page' style='height: ${height}px; width: ${width}px;'>" >> 00-${bn}-plates.html
-    echo "    <img class='all' style='height: ${height}px; width: ${width}px;' data-original='${bn}-page${page}.jpg' />" >> 00-${bn}-plates.html
-    echo "    <img class='cyan' style='height: ${height}px; width: ${width}px;' data-original='${bn}-page${page}(Cyan).jpg' />" >> 00-${bn}-plates.html
-    echo "    <img class='magenta' style='height: ${height}px; width: ${width}px;' data-original='${bn}-page${page}(Magenta).jpg' />" >> 00-${bn}-plates.html
-    echo "    <img class='yellow' style='height: ${height}px; width: ${width}px;' data-original='${bn}-page${page}(Yellow).jpg' />" >> 00-${bn}-plates.html
-    echo "    <img class='black' style='height: ${height}px; width: ${width}px;' data-original='${bn}-page${page}(Black).jpg' />" >> 00-${bn}-plates.html
+    echo "    <img class='all' style='height: ${height}px; width: ${width}px;' src='${bn}-page${page}.jpg' />" >> 00-${bn}-plates.html
+    echo "    <img class='cyan' style='height: ${height}px; width: ${width}px;' src='${bn}-page${page}(Cyan).jpg' />" >> 00-${bn}-plates.html
+    echo "    <img class='magenta' style='height: ${height}px; width: ${width}px;' src='${bn}-page${page}(Magenta).jpg' />" >> 00-${bn}-plates.html
+    echo "    <img class='yellow' style='height: ${height}px; width: ${width}px;' src='${bn}-page${page}(Yellow).jpg' />" >> 00-${bn}-plates.html
+    echo "    <img class='black' style='height: ${height}px; width: ${width}px;' src='${bn}-page${page}(Black).jpg' />" >> 00-${bn}-plates.html
     echo "</div>" >> 00-${bn}-plates.html
 done
 

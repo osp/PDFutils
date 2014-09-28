@@ -13,35 +13,49 @@
             right: 10px;
         }
         div#interface div {
-            background-color: black;
             font-family:sans-serif; 
             text-transform: uppercase;
             font-size: 12px !important;
             letter-spacing: 1px;
-            color: white;
             padding: 5px 7px;
             margin-bottom: 1em;
             cursor: pointer;
+            border: 1px solid black;
         }
-        div#interface div.active {
-            background-color: white;
-            color: black;
-            outline: 1px solid black;
-        }
-        div#interface div:hover {
-                background-color: white;
-                color: black;
-                outline: 1px solid black;
-            }
         img {
             position: absolute;
-            outline: 1px solid black;
+            border-width: 2px;
+            border-style: solid;
+        }
+        .page {
+            margin: 4em;
+        }
+        #cyan:hover, .cyan { border-color:  cyan; color: cyan;}
+        #magenta:hover, .magenta { border-color:  magenta; color: magenta;}
+        #yellow:hover, .yellow { border-color: yellow; color: yellow;}
+        #black:hover, .black { outline: 1px solid black; color: black;}
+        #all:hover, .all { 
+            border-top-color: cyan; 
+            border-left-color: magenta; 
+            border-bottom-color: yellow; 
+            border-right-color: black; 
+        }
+        #cyan.active { background-color: cyan; color: black; }
+        #magenta.active { background-color: magenta; color: black; }
+        #yellow.active { background-color: yellow; color: black; }
+        #black.active { background-color: black; color: white; }
+        #all.active { 
+            border-top: 1px solid cyan; 
+            border-left: 1px solid magenta; 
+            border-bottom: 1px solid yellow; 
+            border-right: 1px solid black; 
+            background-color: white; color: black;
         }
     </style>
 </head>
 <body>
     <div id="interface">
-        <div id="all">All</div>
+        <div id="all" class="active">All</div>
         <div id="cyan">Cyan</div>
         <div id="magenta">Magenta</div>
         <div id="yellow">Yellow</div>
