@@ -25,4 +25,4 @@ Web interface for coloured preview of each plate:
 ![black](http://osp.constantvzw.org/api/osp.tools.PDFutils/8eb6ff8fa341701b3443ad665929e21640a8ba42/blob-data/black.png)
 
 By zooming out, you can see several pages at the same time:
-![many pages]http://osp.constantvzw.org/api/osp.tools.PDFutils/628a1a1eb8067a46be8cc6d7680bb7fa2e7144f7/blob-data/many-pages.png)
+![](many pages]http://osp.constantvzw.org/api/osp.tools.PDFutils/628a1a1eb8067a46be8cc6d7680bb7fa2e7144f7/blob-data/many-pages.png)
