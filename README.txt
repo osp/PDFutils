@@ -1,5 +1,10 @@
 A fresh new repo for small PDF utilities.
 
+#color_convert.sh + gray_to_spot.ps
+	./color_convert.sh black,cmyk,spot-PANTONE 705 U-0.9 0.1 0.5 0.1 input_layer1.pdf,input_layer2.pdf,input_layer3.pdf output.pdf
+This will convert each input PDF file to the corresponding color mode (black, cmyk or spot color), then combine the resulting files on top of each other.
+dependencies: pdftk (for multistamp) + Xpdf (for pdftops)
+
 # rgb2cmyk.sh
 
     ./rgb2cmyk.sh input.pdf
