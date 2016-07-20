@@ -11,6 +11,12 @@ dependencies: pdftk (for multistamp) + Xpdf (for pdftops)
 
 This will convert a PDF to input-cmyk.pdf
 
+If you need overprint:
+
+    ./rgb2cmyk.sh input.pdf overprint
+
+This will convert a PDF to input-cmyk-op.pdf
+
 
 # colorSeparation.sh
 
