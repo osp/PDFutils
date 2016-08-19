@@ -14,11 +14,15 @@
 bn=$(basename $1 ".pdf")
 op=$2
 
-pdftops -level2sep ${bn}.pdf
+pdftops ${bn}.pdf
 
-# IF YOU STILL HAVE SOME CMYK BLACK, TRY (UN)COMMENTING LINE 7 AND 8
-#gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=${bn}-cmyk.pdf ./forceblack.ps ${bn}.ps
-gs -dNOPAUSE -sDEVICE=pdfwrite -dGraphicKPreserve=2  -sColorConversionStrategy=CMYK -dProcessColorModel=/DeviceCMYK -dNOPAUSE -dBATCH  -sOUTPUTFILE=${bn}-cmyk.pdf ${bn}.ps
+gs \
+-dNOPAUSE \
+-dBATCH \
+-sDEVICE=pdfwrite \
+-dProcessColorModel=/DeviceCMYK \
+-sColorConversionStrategy=CMYK \
+-sOutputFile=${bn}-cmyk.pdf ./forceblack.ps ${bn}.ps
 
 if [ $op == overprint ]
     then

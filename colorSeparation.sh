@@ -11,7 +11,7 @@ rm -r pages 2> /dev/null
 bn=$(basename ${1} .pdf)
 
 # Change resolution here, -r150x150 = 150dpi
-gs -sDEVICE=tiffsep -dNOPAUSE -dBATCH -r150x150 -sOutputFile=${bn}-page%03d.tif ${1}
+gs -dSimulateOverprint=true -sDEVICE=tiffsep -dNOPAUSE -dBATCH -r150x150 -sOutputFile=${bn}-page%03d.tif ${1}
 
 echo "MOVE TIF FILES INTO '${bn}-plates' FOLDER"
 mkdir -p ${bn}_plates
